@@ -24,10 +24,13 @@ Logger& Logger::GetInstance() {
 //    }
 //    mutex.unlock();
 //    return *m_logger;
-    std::call_once(flag, [] () {
-        m_logger =  new Logger();
-    });
-    return *m_logger;
+//    std::call_once(flag, [] () {
+//        m_logger =  new Logger();
+//    });
+//    return *m_logger;
+    // Mayer's singleton from c++11 static is thread safe
+    static Logger instance;
+    return instance;
 }
 
 Logger::Logger() {
