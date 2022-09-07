@@ -10,7 +10,7 @@
 #include "Scene.hpp"
 
 int main() {
-    Logger logger = Logger::GetInstance();
+    Logger& logger = Logger::GetInstance();
     logger.Log("=== Begin ===");
     Scene scene("newScene");
     scene.PrepareWorld();

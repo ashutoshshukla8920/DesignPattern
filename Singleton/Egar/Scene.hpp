@@ -24,7 +24,7 @@ class Scene
      ~Logger()
      */
     // solution we can make constructor private
-    Logger m_logger = Logger::GetInstance();
+    Logger& m_logger = Logger::GetInstance();
 public:
     [[nodiscard]] Scene(std::string name);
 

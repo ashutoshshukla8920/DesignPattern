@@ -24,6 +24,9 @@ public:
     void Log(const std::string &message) ;
     void SetLevel(int level) ;
     void SetTag(std::string tag) ;
+    // to remove 3 destructor call remove copy constructor and assignment
+    Logger(const Logger&) = delete;
+    Logger& operator = (const Logger&) = delete;
     ~Logger() ;
 };
 
