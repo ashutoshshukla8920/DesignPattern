@@ -12,16 +12,21 @@
 
 //Logger Logger::m_logger{}; // removed because of inline usage
 std::mutex mutex;
+std::once_flag flag;
 Logger& Logger::GetInstance() {
    // To improve performace we can have double check
    
-    if(m_logger == nullptr) {
-        mutex.lock();
-        if(m_logger == nullptr) {
-            m_logger = new Logger();
-        }
-    }
-    mutex.unlock();
+//    if(m_logger == nullptr) { // read outside critical section
+//        mutex.lock();
+//        if(m_logger == nullptr) {
+//            m_logger = new Logger(); // modified inside critical section, this is mutiple instruction
+//        }
+//    }
+//    mutex.unlock();
+//    return *m_logger;
+    std::call_once(flag, [] () {
+        m_logger =  new Logger();
+    });
     return *m_logger;
 }
 
