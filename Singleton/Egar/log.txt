@@ -1,0 +1,4 @@
+[0][]=== Begin ===
+[0][]Preparing game world for level <newScene>
+[0][]Loading 3d models & actors
+[0][]=== End ===
