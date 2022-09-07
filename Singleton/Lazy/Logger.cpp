@@ -13,9 +13,13 @@
 //Logger Logger::m_logger{}; // removed because of inline usage
 std::mutex mutex;
 Logger& Logger::GetInstance() {
-    mutex.lock();
+   // To improve performace we can have double check
+   
     if(m_logger == nullptr) {
-        m_logger = new Logger();
+        mutex.lock();
+        if(m_logger == nullptr) {
+            m_logger = new Logger();
+        }
     }
     mutex.unlock();
     return *m_logger;
