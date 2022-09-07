@@ -21,7 +21,10 @@ Logger& Logger::GetInstance() {
 Logger::Logger() {
     std::cout << "Logger()\n";
     m_Fp = fopen("log.txt", "w");
-
+    // 1. solution for leaky singleton
+    std::atexit([]() {
+        delete m_logger;
+    });
 }
 
 void Logger::Log(const std::string& message) {

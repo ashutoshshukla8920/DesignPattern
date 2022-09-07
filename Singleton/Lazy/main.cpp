@@ -38,4 +38,10 @@ int main() {
     Entering Main
     ~Logger()
     */
+    
+    // who will call destructor
+    // 1. file close -> exit will close
+    // 2. memory leak => No memory leak , because once program exit all the memory will be released
+    // this type of singleton is leaky singleton
+    // what if the logger is relying on some system resource, so they will not get released, in that case we need somehow call destructor
 }
