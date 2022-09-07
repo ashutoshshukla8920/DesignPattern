@@ -8,13 +8,16 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "Logger.hpp"
 #include <iostream>
+#include <mutex>
 
 //Logger Logger::m_logger{}; // removed because of inline usage
-
+std::mutex mutex;
 Logger& Logger::GetInstance() {
+    mutex.lock();
     if(m_logger == nullptr) {
         m_logger = new Logger();
     }
+    mutex.unlock();
     return *m_logger;
 }
 
