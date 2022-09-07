@@ -12,7 +12,8 @@
 // This is CRTP pattern
 class GameManager : public BaseSingleton<GameManager> {
     GameManager() = default;
-    friend class BaseSingleton<GameManager>; // we have deleted implicity assignment and copyconstructor in base class
+    // we have deleted implicity assignment and copyconstructor in base class
+    friend class BaseSingleton<GameManager>; // we made constructor private , inorder to allow BaseSingleton to create Gamemanger object we need to declare it as friend
 public:
     void init();
 };
