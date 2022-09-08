@@ -8,11 +8,11 @@
 #ifndef TempleScene_hpp
 #define TempleScene_hpp
 
-#include <stdio.h>
-class TempleScene {
+#include "Scene.hpp"
+class TempleScene : public Scene {
 public:
-    void Load();
-    void Run();
+    void Load() override;
+    void Run() override;
 };
 
 #endif /* TempleScene_hpp */

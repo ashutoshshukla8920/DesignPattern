@@ -6,6 +6,7 @@
 //
 
 #include "GameManager.hpp"
+#include "TempleScene.hpp"
 
 void GameManager::StartGame() {
     m_pScene = new TempleScene{};
