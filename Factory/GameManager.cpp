@@ -9,6 +9,9 @@
 //#include "TempleScene.hpp"
 #include "SceneFactory.hpp"
 
+GameManager::GameManager(SceneFactoryBase* sceneFactor) : m_pFactory(sceneFactor) {
+}
+
 
 void GameManager::StartGame() {
     //m_pScene = new TempleScene{};
@@ -29,7 +32,11 @@ void GameManager::StartGame() {
 }
 
 void GameManager::RunScene(int level) {
-    m_pScene = SceneFactory::CreateScene(level);
+    // still we have dependecy, SceneFactory is written by user
+    // how can Gammanger can access SceneFactory, if GameManager is framework class
+    // if this your application this is fine
+    //m_pScene = SceneFactory::CreateScene(level);
+    m_pScene = m_pFactory->CreateScene(level);
     m_pScene->Load();
     m_pScene->Run();
 }

@@ -10,20 +10,24 @@
 
 #include <stdio.h>
 #include "Scene.hpp"
-
+class SceneFactoryBase;
 class GameManager {
     // TempleScene* m_pScene;
     // we want to remove dependency of TempleScene from GameManager
     // because this is thightly bound we cannot add new games
     // so will create an interface
     Scene *m_pScene;
-    void RunScene(int level);
 public:
+    explicit GameManager(SceneFactoryBase* sceneFactory);
     void StartGame();
     // one of the solution
     virtual Scene *CreateScene() {
         return nullptr;
     }
+    
+private:
+    void RunScene(int level);
+    SceneFactoryBase* m_pFactory;
 };
 
 #endif /* GameManager_hpp */

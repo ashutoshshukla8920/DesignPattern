@@ -7,11 +7,11 @@
 
 #ifndef SceneFactory_hpp
 #define SceneFactory_hpp
+#include "SceneFactoryBase.h"
 
-class Scene;
-class SceneFactory {
+class SceneFactory : public SceneFactoryBase {
 public:
-    static Scene* CreateScene(int level);
+    Scene* CreateScene(int level) override;
 };
 
 #endif /* SceneFactory_hpp */

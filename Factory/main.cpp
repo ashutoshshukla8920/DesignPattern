@@ -9,14 +9,16 @@
 //#include "GameManager.hpp"
 // now Client will create nstance of templegame
 #include "TempleGame.hpp"
-#include "SubwayGame.hpp"
-#include "BattleGame.hpp"
+//#include "SubwayGame.hpp"
+//#include "BattleGame.hpp"
+
+#include "SceneFactory.hpp"
 
 int main(int argc, const char * argv[]) {
     //GameManager mgr;
-    // mgr.StartGame();
-    TempleGame mgr;
-    mgr.StartGame();
+//    // mgr.StartGame();
+//    TempleGame mgr;
+//    mgr.StartGame();
     
 //    SubwayGame sMgr;
 //    sMgr.StartGame();
@@ -24,6 +26,8 @@ int main(int argc, const char * argv[]) {
 //    BattleGame bMgr;
 //    bMgr.StartGame();
     
+    GameManager mgr{new SceneFactory()};
+    mgr.StartGame();
     return 0;
 }
 
