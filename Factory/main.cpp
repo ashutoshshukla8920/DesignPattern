@@ -6,11 +6,16 @@
 //
 
 #include <iostream>
-#include "GameManager.hpp"
+//#include "GameManager.hpp"
+// now Client will create nstance of templegame
+#include "TempleGame.hpp"
 
 int main(int argc, const char * argv[]) {
-    GameManager mgr;
+    //GameManager mgr;
+    // mgr.StartGame();
+    TempleGame mgr;
     mgr.StartGame();
+    
     return 0;
 }
 

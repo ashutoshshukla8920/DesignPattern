@@ -19,6 +19,10 @@ class GameManager {
     Scene *m_pScene;
 public:
     void StartGame();
+    // one of the solution
+    virtual Scene *CreateScene() {
+        return nullptr;
+    }
 };
 
 #endif /* GameManager_hpp */
