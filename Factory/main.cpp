@@ -18,11 +18,11 @@ int main(int argc, const char * argv[]) {
     TempleGame mgr;
     mgr.StartGame();
     
-    SubwayGame sMgr;
-    sMgr.StartGame();
-    
-    BattleGame bMgr;
-    bMgr.StartGame();
+//    SubwayGame sMgr;
+//    sMgr.StartGame();
+//    
+//    BattleGame bMgr;
+//    bMgr.StartGame();
     
     return 0;
 }

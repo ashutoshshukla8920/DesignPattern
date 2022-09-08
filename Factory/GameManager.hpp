@@ -17,6 +17,7 @@ class GameManager {
     // because this is thightly bound we cannot add new games
     // so will create an interface
     Scene *m_pScene;
+    void RunScene(int level);
 public:
     void StartGame();
     // one of the solution
