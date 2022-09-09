@@ -38,7 +38,7 @@ public:
     }
 };
 
-template <typename T, typename LockPolicy>
+template <typename T, typename LockPolicy = NoLock>
 class Array {
     std::vector<T> m_array;
     std::mutex mtx;
