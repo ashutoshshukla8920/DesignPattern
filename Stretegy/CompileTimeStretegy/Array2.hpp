@@ -1,24 +1,26 @@
 //
-//  Array.hpp
+//  Array2.hpp
 //  CompileTimeStretegy
 //
-//  Created by Ashutosh Shukla on 09/09/22.
+//  Created by Ashutosh Shukla on 10/09/22.
 //
 
-#ifndef Array_hpp
-#define Array_hpp
+#ifndef Array2_hpp
+#define Array2_hpp
+
 #include <vector>
 #include <mutex>
 
 // Program should run in both single or multi threaded application
 // in single threaded we should not use mutex
 
-// Now we can have better implementation , at compiletime programmer knows wether system is single threaded or multithreaded
-// implement compiletime polymorphism
+class LockPolicy {
+public:
+    virtual void lock() = 0;
+    virtual void unlock() = 0;
+};
 
-
-
-class MutexLock {
+class MutexLock : public LockPolicy {
 private:
     std::mutex mutex;
 public:
@@ -30,7 +32,7 @@ public:
     }
 };
 
-class NoLock {
+class NoLock : public LockPolicy {
 public:
     void lock() {
     }
@@ -38,13 +40,19 @@ public:
     }
 };
 
-template <typename T, typename LockPolicy>
+template <typename T>
 class Array {
     std::vector<T> m_array;
     std::mutex mtx;
     //bool m_IsMultiThreaded;
-    LockPolicy lockPolicy;
+    LockPolicy *lockPtr;
 public:
+    // what if user passes accidently nullptr, check in constructor, if null we can thow exception
+    // or create NoLock by default, but here lockPtr is pointer, who will delete the lockpolicy
+    // this will create object on heap
+    Array(LockPolicy* th) : lockPtr(th) { // constructor is always threadsafe
+        
+    }
     void add(T value);
     void remove(int pos);
     void insert(T value, int pos);
@@ -52,8 +60,8 @@ public:
     size_t size();
 };
 
-template <typename T, typename LockPolicy>
-void Array<T, LockPolicy>::add(T value) {
+template <typename T>
+void Array<T>::add(T value) {
 //    if(m_IsMultiThreaded) {
 //        mtx.lock();
 //    }
@@ -61,13 +69,13 @@ void Array<T, LockPolicy>::add(T value) {
 //    if(m_IsMultiThreaded) {
 //        mtx.unlock();
 //    }
-    lockPolicy.lock();
+    lockPtr->lock();
     m_array.push_back(value);
-    lockPolicy.unlock();
+    lockPtr->unlock();
 }
 
-template <typename T, typename LockPolicy>
-void Array<T, LockPolicy>::remove(int pos) {
+template <typename T>
+void Array<T>::remove(int pos) {
 //    if(m_IsMultiThreaded) {
 //        mtx.lock();
 //    }
@@ -75,13 +83,13 @@ void Array<T, LockPolicy>::remove(int pos) {
 //    if(m_IsMultiThreaded) {
 //        mtx.lock();
 //    }
-    lockPolicy.lock();
+    lockPtr->lock();
     m_array.erase(m_array.begin() + pos);
-    lockPolicy.unlock();
+    lockPtr->unlock();
 }
 
-template <typename T, typename LockPolicy>
-void Array<T, LockPolicy>::insert(T value, int pos) {
+template <typename T>
+void Array<T>::insert(T value, int pos) {
 //    if(m_IsMultiThreaded) {
 //        mtx.lock();
 //    }
@@ -90,20 +98,22 @@ void Array<T, LockPolicy>::insert(T value, int pos) {
 //    if(m_IsMultiThreaded) {
 //        mtx.lock();
 //    }
-    lockPolicy.lock();
+    lockPtr->lock();
     auto itPos = m_array.begin() + pos;
     m_array.insert(itPos, value);
-    lockPolicy.unlock();
+    lockPtr->unlock();
 }
 
-template <typename T, typename LockPolicy>
-T Array<T, LockPolicy>::get(int pos) {
+template <typename T>
+T Array<T>::get(int pos) {
     return m_array[pos];
 }
 
-template <typename T, typename LockPolicy>
-size_t Array<T, LockPolicy>::size() {
+template <typename T>
+size_t Array<T>::size() {
     return m_array.size();
+    
 }
 
-#endif /* Array_hpp */
+
+#endif /* Array2_hpp */
