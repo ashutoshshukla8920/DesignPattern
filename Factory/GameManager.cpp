@@ -9,7 +9,7 @@
 //#include "TempleScene.hpp"
 #include "SceneFactory.hpp"
 
-GameManager::GameManager(SceneFactoryBase* sceneFactor) : m_pFactory(sceneFactor) {
+GameManager::GameManager( std::unique_ptr<SceneFactoryBase> sceneFactor) : m_pFactory(std::move(sceneFactor)) {
 }
 
 

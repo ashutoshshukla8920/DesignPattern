@@ -10,6 +10,8 @@
 
 #include <stdio.h>
 #include "Scene.hpp"
+#include <memory>
+
 class SceneFactoryBase;
 class GameManager {
     // TempleScene* m_pScene;
@@ -18,7 +20,7 @@ class GameManager {
     // so will create an interface
     Scene *m_pScene;
 public:
-    explicit GameManager(SceneFactoryBase* sceneFactory);
+    explicit GameManager(std::unique_ptr<SceneFactoryBase> sceneFactory);
     void StartGame();
     // one of the solution
     virtual Scene *CreateScene() {
@@ -27,7 +29,7 @@ public:
     
 private:
     void RunScene(int level);
-    SceneFactoryBase* m_pFactory;
+    std::unique_ptr<SceneFactoryBase> m_pFactory;
 };
 
 #endif /* GameManager_hpp */

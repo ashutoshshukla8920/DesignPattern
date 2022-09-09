@@ -26,9 +26,12 @@ int main(int argc, const char * argv[]) {
 //    BattleGame bMgr;
 //    bMgr.StartGame();
     
-    GameManager mgr{new SceneFactory()};
+    GameManager mgr{std::make_unique<SceneFactory>()};
     mgr.StartGame();
     return 0;
 }
+
+// we have used make_unique is factory c++, this gives strong exception gurantee
+// make_unique is templatized factory
 
 
