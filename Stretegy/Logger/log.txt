@@ -1,4 +1,8 @@
-[0][]<0x1000ffe00>====== Begin =======
-[0][]<0x1000ffe00>Loading 3d models & actors
-[0][]<0x1000ffe00>Preparing game world for level <Main>
-[0][]<0x1000ffe00>====== End =========
+[0][]<Fri Sep  9 23:31:37 2022
+>====== Begin =======
+[0][]<Fri Sep  9 23:31:37 2022
+>Loading 3d models & actors
+[0][]<Fri Sep  9 23:31:37 2022
+>Preparing game world for level <Main>
+[0][]<Fri Sep  9 23:31:37 2022
+>====== End =========

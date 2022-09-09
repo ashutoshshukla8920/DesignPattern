@@ -10,10 +10,12 @@
 #include "Scene.hpp"
 #include <iostream>
 #include <thread>
+#include "TimeFormatter.hpp"
 
 
 int main() {
     Logger &logger = Logger::GetInstance();
+    logger.SetFormatter(new TimeFormatter());
     logger.Log("====== Begin =======");
     Scene scene{"Main"};
     scene.LoadModels();

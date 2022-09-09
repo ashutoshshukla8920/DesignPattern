@@ -10,7 +10,8 @@
 
 #pragma once
 #include <string>
-#include "ThreadFormatter.hpp"
+#include "Formatter.hpp"
+
 
 class Logger {
     FILE *m_Fp{} ;
@@ -23,10 +24,12 @@ class Logger {
     // static Logger m_logger;
     // Lazy instantiation
     inline static Logger* m_logger{}; // c++17
-    ThreadFormatter fmt{};
+    //ThreadFormatter fmt{};
+    Formatter *m_pFormatter{};
     
 public:
     static Logger& GetInstance();
+    void SetFormatter(Formatter *p);
     void Log(const std::string &message) ;
     void Log(const std::string &message, int type) ;
     void SetLevel(int level) ;

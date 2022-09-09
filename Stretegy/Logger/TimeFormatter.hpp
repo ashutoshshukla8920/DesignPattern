@@ -1,18 +1,19 @@
 //
-//  ThreadFormatter.hpp
+//  TimeFormatter.hpp
 //  Singleton Early
 //
 //  Created by Ashutosh Shukla on 09/09/22.
 //
 
-#ifndef ThreadFormatter_hpp
-#define ThreadFormatter_hpp
+#ifndef TimeFormatter_hpp
+#define TimeFormatter_hpp
+
 #include <iostream>
 #include "Formatter.hpp"
 
-class ThreadFormatter : public Formatter{
+class TimeFormatter : public Formatter {
 public:
     std::string Format(const std::string& message) override;
 };
 
-#endif /* ThreadFormatter_hpp */
+#endif /* TimeFormatter_hpp */
