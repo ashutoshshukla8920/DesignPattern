@@ -10,6 +10,7 @@
 
 #pragma once
 #include <string>
+#include "ThreadFormatter.hpp"
 
 class Logger {
     FILE *m_Fp{} ;
@@ -22,6 +23,7 @@ class Logger {
     // static Logger m_logger;
     // Lazy instantiation
     inline static Logger* m_logger{}; // c++17
+    ThreadFormatter fmt{};
     
 public:
     static Logger& GetInstance();

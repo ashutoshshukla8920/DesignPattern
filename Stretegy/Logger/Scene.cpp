@@ -14,11 +14,11 @@ Scene::Scene(std::string name): m_Name{std::move(name)} {
 
 void Scene::PrepareWorld() {
     //std::cout << "Preparing game world for level <" << m_Name << ">" << std::endl ;
-    Logger::GetInstance().Log("Preparing game world for level <" + m_Name + ">", 2);
+    Logger::GetInstance().Log("Preparing game world for level <" + m_Name + ">");
 }
 
 void Scene::LoadModels() {
     //std::cout << "Loading 3d models & actors\n" ;
-    Logger::GetInstance().Log("Loading 3d models & actors", 2);
+    Logger::GetInstance().Log("Loading 3d models & actors");
 }
 

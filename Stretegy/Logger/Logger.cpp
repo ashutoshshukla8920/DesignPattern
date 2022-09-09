@@ -45,7 +45,7 @@ Logger::Logger() {
 }
 
 void Logger::Log(const std::string& message) {
-    fprintf(m_Fp, "[%d][%s]%s\n", m_Level, m_Tag.c_str(), message.c_str());
+    fprintf(m_Fp, "[%d][%s]%s\n", m_Level, m_Tag.c_str(), fmt.Format(message).c_str());
     fflush(m_Fp);
 }
 
@@ -65,6 +65,7 @@ void Logger::Log(const std::string& message, int type) {
     
     fflush(m_Fp);
 }
+
 
 void Logger::SetLevel(int level) {
     m_Level = level;
