@@ -11,6 +11,7 @@
 #include <iostream>
 #include <thread>
 
+
 int main() {
     Logger &logger = Logger::GetInstance();
     logger.Log("====== Begin =======");

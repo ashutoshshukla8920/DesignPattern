@@ -9,6 +9,7 @@
 #include "Logger.hpp"
 #include <iostream>
 #include <mutex>
+#include <thread>
 
 //Logger Logger::m_logger{}; // removed because of inline usage
 std::mutex mutex;
@@ -35,7 +36,7 @@ Logger& Logger::GetInstance() {
 
 Logger::Logger() {
     std::cout << "Logger()\n";
-    m_Fp = fopen("log.txt", "w");
+    m_Fp = fopen("/Users/asshukla/DesignPattern/Stretegy/Logger/log.txt", "w");
     // 1. solution for leaky singleton
     std::atexit([]() {
         delete m_logger;
@@ -44,6 +45,17 @@ Logger::Logger() {
 
 void Logger::Log(const std::string& message) {
     fprintf(m_Fp, "[%d][%s]%s\n", m_Level, m_Tag.c_str(), message.c_str());
+    fflush(m_Fp);
+}
+
+// we want to write threadId when we are writing logs
+void Logger::Log(const std::string& message, int type) {
+    if(type == 0) {
+        fprintf(m_Fp, "[%d][%s]%s\n", m_Level, m_Tag.c_str(), message.c_str());
+    }
+    else if(type == 1){
+        fprintf(m_Fp, "<%d>[%d][%s]%s\n", std::this_thread::get_id(), m_Level, m_Tag.c_str(), message.c_str());
+    }
     fflush(m_Fp);
 }
 

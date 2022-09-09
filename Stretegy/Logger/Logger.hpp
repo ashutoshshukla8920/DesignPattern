@@ -26,6 +26,7 @@ class Logger {
 public:
     static Logger& GetInstance();
     void Log(const std::string &message) ;
+    void Log(const std::string &message, int type) ;
     void SetLevel(int level) ;
     void SetTag(std::string tag) ;
     // to remove 3 destructor call remove copy constructor and assignment

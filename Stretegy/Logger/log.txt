@@ -1,0 +1,4 @@
+[0][]====== Begin =======
+<998912>[0][]Loading 3d models & actors
+<998912>[0][]Preparing game world for level <Main>
+[0][]====== End =========
