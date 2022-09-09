@@ -22,10 +22,12 @@ int main(int argc, const char * argv[]) {
             arr.add(i);
         }
     }};
+    arr.add(3);
     t1.join();
     t2.join();
     for(int i = 0; i < arr.size(); i++) {
         std::cout<<arr.get(i)<<" ";
     }
+    std::cout<<arr.size()<<std::endl;
     return 0;
 }
