@@ -38,12 +38,12 @@ void Array<T>::insert(T value, int pos) {
 
 template <typename T>
 T Array<T>::get(int pos) {
-    m_array[pos];
+    return m_array[pos];
 }
 
 template <typename T>
 size_t Array<T>::size() {
-    m_array.size();
+    return m_array.size();
 }
 
 #endif /* Array_hpp */
