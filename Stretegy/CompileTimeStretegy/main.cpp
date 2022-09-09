@@ -11,7 +11,7 @@
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    Array<int> arr;
+    Array<int> arr(true);
     std::thread t1{[&arr]() {
         for(int i = 0; i < 10; i++) {
             arr.add(i);

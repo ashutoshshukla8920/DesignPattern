@@ -10,11 +10,17 @@
 #include <vector>
 #include <mutex>
 
+// Program should run in both single or multi threaded application
+// in single threaded we should not use mutex
 template <typename T>
 class Array {
     std::vector<T> m_array;
     std::mutex mtx;
+    bool m_IsMultiThreaded;
 public:
+    Array(bool th) : m_IsMultiThreaded(th) { // constructor is always threadsafe
+        
+    }
     void add(T value);
     void remove(int pos);
     void insert(T value, int pos);
@@ -24,24 +30,36 @@ public:
 
 template <typename T>
 void Array<T>::add(T value) {
-    mtx.lock();
+    if(m_IsMultiThreaded) {
+        mtx.lock();
+    }
     m_array.push_back(value);
-    mtx.unlock();
+    if(m_IsMultiThreaded) {
+        mtx.unlock();
+    }
 }
 
 template <typename T>
 void Array<T>::remove(int pos) {
-    mtx.lock();
+    if(m_IsMultiThreaded) {
+        mtx.lock();
+    }
     m_array.erase(m_array.begin() + pos);
-    mtx.unlock();
+    if(m_IsMultiThreaded) {
+        mtx.lock();
+    }
 }
 
 template <typename T>
 void Array<T>::insert(T value, int pos) {
-    mtx.lock();
+    if(m_IsMultiThreaded) {
+        mtx.lock();
+    }
     auto itPos = m_array.begin() + pos;
     m_array.insert(itPos, value);
-    mtx.unlock();
+    if(m_IsMultiThreaded) {
+        mtx.lock();
+    }
 }
 
 template <typename T>
