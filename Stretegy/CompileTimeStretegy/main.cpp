@@ -11,7 +11,8 @@
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    Array<int> arr(true);
+    //Array<int> arr(true);
+    Array<int> arr(new MutexLock{});
     std::thread t1{[&arr]() {
         for(int i = 0; i < 10; i++) {
             arr.add(i);

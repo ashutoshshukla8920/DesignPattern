@@ -12,13 +12,41 @@
 
 // Program should run in both single or multi threaded application
 // in single threaded we should not use mutex
+
+class LockPolicy {
+public:
+    virtual void lock() = 0;
+    virtual void unlock() = 0;
+};
+
+class MutexLock : public LockPolicy {
+private:
+    std::mutex mutex;
+public:
+    void lock() {
+        mutex.lock();
+    }
+    void unlock() {
+        mutex.unlock();
+    }
+};
+
+class NoLock : public LockPolicy {
+public:
+    void lock() {
+    }
+    void unlock() {
+    }
+};
+
 template <typename T>
 class Array {
     std::vector<T> m_array;
     std::mutex mtx;
-    bool m_IsMultiThreaded;
+    //bool m_IsMultiThreaded;
+    LockPolicy *lockPtr;
 public:
-    Array(bool th) : m_IsMultiThreaded(th) { // constructor is always threadsafe
+    Array(LockPolicy* th) : lockPtr(th) { // constructor is always threadsafe
         
     }
     void add(T value);
@@ -30,36 +58,46 @@ public:
 
 template <typename T>
 void Array<T>::add(T value) {
-    if(m_IsMultiThreaded) {
-        mtx.lock();
-    }
+//    if(m_IsMultiThreaded) {
+//        mtx.lock();
+//    }
+//    m_array.push_back(value);
+//    if(m_IsMultiThreaded) {
+//        mtx.unlock();
+//    }
+    lockPtr->lock();
     m_array.push_back(value);
-    if(m_IsMultiThreaded) {
-        mtx.unlock();
-    }
+    lockPtr->unlock();
 }
 
 template <typename T>
 void Array<T>::remove(int pos) {
-    if(m_IsMultiThreaded) {
-        mtx.lock();
-    }
+//    if(m_IsMultiThreaded) {
+//        mtx.lock();
+//    }
+//    m_array.erase(m_array.begin() + pos);
+//    if(m_IsMultiThreaded) {
+//        mtx.lock();
+//    }
+    lockPtr->lock();
     m_array.erase(m_array.begin() + pos);
-    if(m_IsMultiThreaded) {
-        mtx.lock();
-    }
+    lockPtr->unlock();
 }
 
 template <typename T>
 void Array<T>::insert(T value, int pos) {
-    if(m_IsMultiThreaded) {
-        mtx.lock();
-    }
+//    if(m_IsMultiThreaded) {
+//        mtx.lock();
+//    }
+//    auto itPos = m_array.begin() + pos;
+//    m_array.insert(itPos, value);
+//    if(m_IsMultiThreaded) {
+//        mtx.lock();
+//    }
+    lockPtr->lock();
     auto itPos = m_array.begin() + pos;
     m_array.insert(itPos, value);
-    if(m_IsMultiThreaded) {
-        mtx.lock();
-    }
+    lockPtr->unlock();
 }
 
 template <typename T>
