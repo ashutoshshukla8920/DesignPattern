@@ -10,6 +10,7 @@
 #include <iostream>
 #include <mutex>
 #include <thread>
+#include <chrono>
 
 //Logger Logger::m_logger{}; // removed because of inline usage
 std::mutex mutex;
@@ -49,13 +50,19 @@ void Logger::Log(const std::string& message) {
 }
 
 // we want to write threadId when we are writing logs
+// also want to display current time in somecases
+// also now we want to display time
 void Logger::Log(const std::string& message, int type) {
     if(type == 0) {
         fprintf(m_Fp, "[%d][%s]%s\n", m_Level, m_Tag.c_str(), message.c_str());
     }
     else if(type == 1){
         fprintf(m_Fp, "<%d>[%d][%s]%s\n", std::this_thread::get_id(), m_Level, m_Tag.c_str(), message.c_str());
+    } else if(type == 2) {
+        time_t t = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+        fprintf(m_Fp, "<%s>[%d][%s]%s\n", ctime(&t), m_Level, m_Tag.c_str(), message.c_str());
     }
+    
     fflush(m_Fp);
 }
 
