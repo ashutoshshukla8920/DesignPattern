@@ -20,6 +20,9 @@ Division::Division(const Division &exp)
 
 int Division::compute()
 {
+    if(value2 == 0) {
+        throw DIVIDE_BY_ZERO;
+    }
     return value1 / value2;
 }
 

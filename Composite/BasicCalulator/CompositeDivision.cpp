@@ -22,7 +22,12 @@ CompositeDivision::CompositeDivision(const CompositeDivision& exp)
 
 int CompositeDivision::compute()
 {
-    return operations[0]->compute() + operations[1]->compute();
+    int value1 = operations[0]->compute();
+    int value2 = operations[1]->compute();
+    if(value2 == 0) {
+        throw DIVIDE_BY_ZERO;
+    }
+    return value1/value2;
 }
 
 Expression* CompositeDivision::copy()

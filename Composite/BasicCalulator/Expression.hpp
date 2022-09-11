@@ -7,6 +7,7 @@
 
 #ifndef Expression_hpp
 #define Expression_hpp
+#define DIVIDE_BY_ZERO 1
 
 class FileHandler;
 class Expression
