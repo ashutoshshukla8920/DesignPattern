@@ -9,8 +9,10 @@
 #define OnState_hpp
 #include "LampState.hpp"
 #include "BaseSingleton.h"
+#include <typeindex>
 
 class OnState : public LampState, public BaseSingleton<OnState> {
+    std::type_index m_Type = std::type_index(typeid(OnState));
 public:
     LampState* SwitchOn() override;
     LampState* SwitchOff() override;

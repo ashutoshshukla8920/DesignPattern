@@ -9,8 +9,10 @@
 #define OffState_hpp
 #include "LampState.hpp"
 #include "BaseSingleton.h"
+#include <typeindex>
 
 class OffState : public LampState , public BaseSingleton<OffState> {
+    std::type_index m_Type = std::type_index(typeid(OffState));
 public:
     LampState* SwitchOn() override;
     LampState* SwitchOff() override;

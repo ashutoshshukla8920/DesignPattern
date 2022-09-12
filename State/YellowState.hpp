@@ -9,8 +9,10 @@
 #define YellowState_hpp
 #include "LampState.hpp"
 #include "BaseSingleton.h"
+#include <typeindex>
 
 class YellowState : public LampState, public BaseSingleton<YellowState> {
+    std::type_index m_Type = std::type_index(typeid(YellowState));
 public:
     LampState* SwitchOn() override;
     LampState* SwitchOff() override;
