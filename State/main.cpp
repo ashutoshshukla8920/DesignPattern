@@ -12,5 +12,7 @@
 int main() {
     Lamp lamp;
     lamp.SwitchOn() ;
+    lamp.SwitchOn();
     lamp.SwitchOff() ;
+    lamp.SwitchOff();
 }
