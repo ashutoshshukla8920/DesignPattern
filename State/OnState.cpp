@@ -7,10 +7,11 @@
 
 #include "OnState.hpp"
 #include "OffState.hpp"
+#include "YellowState.hpp"
 #include <iostream>
 LampState* OnState::SwitchOn() {
-    std::cout<<"Already On\n";
-    return this;
+    std::cout<<"[White] Lamp has switched to Yellow color\n";
+    return new YellowState{};
 }
 
 LampState* OnState::SwitchOff() {
