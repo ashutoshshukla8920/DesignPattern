@@ -13,6 +13,8 @@ class LampState {
 public:
     // whenever new trasition we have new object created, how to resolve memory leak
     // we can implement singleton
+    // other problem is now yellow state is dependent on onstate , onstate dependent on off and yellow and so on
+    // we need to remove this dependency, if class needs to create instance of another class without depending on concrete type use ffactory
     LampState() {
         std::cout<<"LampState()\n";
     }

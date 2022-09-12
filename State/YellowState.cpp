@@ -6,8 +6,9 @@
 //
 
 #include "YellowState.hpp"
-#include "OnState.hpp"
+//#include "OnState.hpp"
 #include <iostream>
+#include "StateFactory.hpp"
 
 LampState* YellowState::SwitchOn() {
     std::cout<<"[Yellow] Already glowing in yellow color\n";
@@ -16,5 +17,6 @@ LampState* YellowState::SwitchOn() {
 
 LampState* YellowState::SwitchOff() {
     std::cout<<"[Yellow] Swithched to White color\n";
-    return OnState::GetInstance();
+    //return OnState::GetInstance();
+    return StateFactory::GetState("on");
 }

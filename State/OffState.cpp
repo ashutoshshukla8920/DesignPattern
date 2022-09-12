@@ -6,12 +6,14 @@
 //
 
 #include "OffState.hpp"
-#include "OnState.hpp"
+//#include "OnState.hpp"
 #include <iostream>
+#include "StateFactory.hpp"
 
 LampState* OffState::SwitchOn() {
     std::cout<<"Switched On\n";
-    return OnState::GetInstance();
+    //return OnState::GetInstance();
+    return StateFactory::GetState("on");
 }
 
 LampState* OffState::SwitchOff() {
