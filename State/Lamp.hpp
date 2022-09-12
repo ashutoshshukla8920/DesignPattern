@@ -7,15 +7,19 @@
 
 #ifndef Lamp_hpp
 #define Lamp_hpp
- enum class LampState {ON, OFF};
- enum class LampColor {WHITE, YELLOW};
+// enum class LampState {ON, OFF};
+// enum class LampColor {WHITE, YELLOW};
+class LampState;
 class Lamp
 {
-     LampState state = LampState::OFF;
-     LampColor color = LampColor::WHITE;
+//     LampState state = LampState::OFF;
+//     LampColor color = LampColor::WHITE;
 public:
+    Lamp();
     void SwitchOn() ;
     void SwitchOff() ;
+private:
+    LampState *state;
 };
 
 #endif /* Lamp_hpp */
