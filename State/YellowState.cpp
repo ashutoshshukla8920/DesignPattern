@@ -11,10 +11,10 @@
 
 LampState* YellowState::SwitchOn() {
     std::cout<<"[Yellow] Already glowing in yellow color\n";
-    return this;
+    return YellowState::GetInstance();
 }
 
 LampState* YellowState::SwitchOff() {
     std::cout<<"[Yellow] Swithched to White color\n";
-    return new OnState{};
+    return OnState::GetInstance();
 }

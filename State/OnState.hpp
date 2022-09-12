@@ -8,12 +8,13 @@
 #ifndef OnState_hpp
 #define OnState_hpp
 #include "LampState.hpp"
+#include "BaseSingleton.h"
 
-class OnState : public LampState {
+class OnState : public LampState, public BaseSingleton<OnState> {
 public:
-    ~OnState() {}
     LampState* SwitchOn() override;
     LampState* SwitchOff() override;
+    MAKE_SINGLETON(OnState);
 };
 
 #endif /* OnState_hpp */

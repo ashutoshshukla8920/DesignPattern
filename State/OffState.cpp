@@ -11,11 +11,11 @@
 
 LampState* OffState::SwitchOn() {
     std::cout<<"Switched On\n";
-    return new OnState();
+    return OnState::GetInstance();
 }
 
 LampState* OffState::SwitchOff() {
     std::cout<<"Already Off\n";
-    return this;
+    return OffState::GetInstance();
 }
 

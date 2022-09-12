@@ -18,3 +18,4 @@ int main() {
     lamp.SwitchOff();
     lamp.SwitchOff();
 }
+

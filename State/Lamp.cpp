@@ -10,7 +10,7 @@
 #include <iostream>
 
 Lamp::Lamp() {
-    state = new OffState{};
+    state = OffState::GetInstance();
 }
 
 void Lamp::SwitchOn() {
