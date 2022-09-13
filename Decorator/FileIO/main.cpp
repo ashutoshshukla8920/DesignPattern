@@ -20,8 +20,9 @@ void useFS(Stream *fs) {
 int main(int argc, const char * argv[]) {
     //FileStream fs;
     //BufferedStream fs;
-    CompressedStream fs(new FileStream);
+    //CompressedStream fs(new FileStream);
     // now client wants to have compressed and buffered stream
+    CompressedStream fs(CompressedStream(new BufferedStream(new FileStream)));
     useFS(&fs);
     return 0;
 }

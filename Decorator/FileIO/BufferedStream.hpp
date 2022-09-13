@@ -10,8 +10,10 @@
 
 #include "FileStream.hpp"
 #include <string>
-class BufferedStream : public FileStream {
+class BufferedStream : public Stream {
+    Stream* m_FS;
 public:
+    BufferedStream(Stream *s);
     void Write(std::string s)override;
     void Read()override;
 };
