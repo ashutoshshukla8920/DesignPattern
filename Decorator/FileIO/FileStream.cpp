@@ -6,7 +6,7 @@
 //
 
 #include "FileStream.hpp"
-#include <iostream>
+
 void FileStream::Write(std::string s) {
     m_S =  s;
     std::cout<<"Written:" + s << "\n";

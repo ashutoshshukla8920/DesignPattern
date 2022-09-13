@@ -8,14 +8,16 @@
 #include <iostream>
 #include "FileStream.hpp"
 #include "Stream.h"
+#include "BufferedStream.hpp"
 
 void useFS(Stream *fs) {
-    fs->Write(std::string("Helloworld"));
+    fs->Write(std::string("HelloWorld"));
     fs->Read();
 }
 
 int main(int argc, const char * argv[]) {
-    FileStream fs;
+    //FileStream fs;
+    BufferedStream fs;
     useFS(&fs);
     return 0;
 }
