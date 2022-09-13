@@ -9,6 +9,7 @@
 #include "FileStream.hpp"
 #include "Stream.h"
 #include "BufferedStream.hpp"
+#include "CompressedStream.hpp"
 
 void useFS(Stream *fs) {
     fs->Write(std::string("HelloWorld"));
@@ -17,7 +18,8 @@ void useFS(Stream *fs) {
 
 int main(int argc, const char * argv[]) {
     //FileStream fs;
-    BufferedStream fs;
+    //BufferedStream fs;
+    CompressedStream fs;
     useFS(&fs);
     return 0;
 }
