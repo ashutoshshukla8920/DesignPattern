@@ -6,12 +6,17 @@
 //
 
 #include "CompressedStream.hpp"
+
+CompressedStream::CompressedStream(Stream* s) : m_FS(s){
+    
+}
 void CompressedStream::Write(std::string s) {
     std::cout << "Compress data\n";
-    FileStream::Write(s);
+    m_FS->Write(s);
 }
 
 void CompressedStream::Read(){
     std::cout << "decompress data \n";
-    FileStream::Read();
+    m_FS->Read();
 }
+

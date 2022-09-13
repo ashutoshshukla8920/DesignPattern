@@ -8,12 +8,15 @@
 #ifndef CompressedStream_hpp
 #define CompressedStream_hpp
 
-#include "FileStream.hpp"
+#include "Stream.h"
 #include <string>
-class CompressedStream : public FileStream {
+// we need to inherit compressedstream from stream otherwise usefs will not work
+class CompressedStream : public Stream {
+    Stream *m_FS;
 public:
-    void Write(std::string s)override;
-    void Read()override;
+    CompressedStream(Stream *s);
+    void Write(std::string s);
+    void Read();
 };
 
 #endif /* CompressedStream_hpp */
