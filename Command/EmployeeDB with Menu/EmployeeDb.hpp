@@ -21,13 +21,13 @@ struct Employee {
 class RecordView;
 class EmployeeDb : public Subject /*, public Command */{
     std::vector<Employee *> m_Employees{};
-    View *rv;
+    //View *rv;
     //std::vector<View*> m_Views;
 
 public:
-    void Set(View *r) {
-        rv = r;
-    }
+//    void Set(View *r) {
+//        rv = r;
+//    }
     //void RegisterView(View* r);
     //void UnRegisterView(View* r);
     //void DisplayChanges(int index);
