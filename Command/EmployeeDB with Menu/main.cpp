@@ -9,15 +9,19 @@
 #include "UpdateCommand.hpp"
 #include "DisplayCommand.hpp"
 EmployeeDb db;
+AddCommand add{&db};
+RemoveCommand rem{&db};
+UpdateCommand update{&db};
+DisplayCommand display{&db};
 // we want to build UI
 // Menu should not know about EmpDB, Menu can interact with multiple calss
 // we want to implement undo
 void Menu() {
     //Command *pCmd = &db;
-    Command *pCmdAdd = new AddCommand(&db);
-    Command *pCmdRemove = new RemoveCommand(&db);
-    Command *pCmdChange = new UpdateCommand(&db);
-    Command *pCmdDisplay = new DisplayCommand(&db);
+    Command *pCmdAdd = &add;
+    Command *pCmdRemove = &rem;
+    Command *pCmdChange = &update;
+    Command *pCmdDisplay = &display;
     
     bool exit = false;
     while(!exit) {
