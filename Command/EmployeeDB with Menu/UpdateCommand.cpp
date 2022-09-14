@@ -22,6 +22,7 @@ void UpdateCommand::Execute() {
     std::cout<<"Salary:";
     std::cin >> salary;
     m_pDb->ChangeSalary(id, salary);
+    g_Stack.push(new UpdateCommand(*this));
 }
 
 void UpdateCommand::Undo() {

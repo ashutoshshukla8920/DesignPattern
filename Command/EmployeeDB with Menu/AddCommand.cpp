@@ -25,6 +25,7 @@ void AddCommand::Execute() {
     std::cin >> salary;
     m_Id = id;
     m_pDb->AddNew(id, name, salary);
+    g_Stack.push(new AddCommand(*this));
 }
 
 void AddCommand::Undo() {

@@ -32,4 +32,12 @@ int main() {
     menu.SetUpdateCommand(&update);
     menu.SetDisplayCommand(&display);
     menu.Run();
+    
+    std::cout<< "Undo All \n";
+    while (!g_Stack.empty()) {
+        std::cout<<"\n --";
+        auto cmd = g_Stack.top();
+        cmd->Undo();
+        g_Stack.pop();
+    }
 }

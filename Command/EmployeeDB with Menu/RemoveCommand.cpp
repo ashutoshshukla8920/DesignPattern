@@ -18,6 +18,7 @@ void RemoveCommand::Execute() {
     std::cin>>id;
     m_Emp = m_pDb->GetEmployee(id);
     m_pDb->Remove(id);
+    g_Stack.push(new RemoveCommand(*this));
 }
 
 void RemoveCommand::Undo() {
