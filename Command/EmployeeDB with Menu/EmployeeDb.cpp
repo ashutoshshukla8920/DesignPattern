@@ -69,7 +69,7 @@ std::size_t EmployeeDb::Count() const {
 //    }
 //}
 
-
-void EmployeeDb::Execute(int id, const std::string &name, double salary) {
-    AddNew(id, name, salary);
-}
+//
+//void EmployeeDb::Execute(int id, const std::string &name, double salary) {
+//    AddNew(id, name, salary);
+//}

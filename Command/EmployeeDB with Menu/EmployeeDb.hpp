@@ -19,7 +19,7 @@ struct Employee {
 };
 
 class RecordView;
-class EmployeeDb : public Subject, public Command {
+class EmployeeDb : public Subject /*, public Command */{
     std::vector<Employee *> m_Employees{};
     View *rv;
     //std::vector<View*> m_Views;
@@ -36,7 +36,7 @@ public:
     void ChangeSalary(int id, double new_salary);
     const Employee *Get(std::size_t position)const;
     std::size_t Count()const;
-    void Execute(int id, const std::string &name, double salary) override;
+//    void Execute(int id, const std::string &name, double salary) override;
 };
 
 

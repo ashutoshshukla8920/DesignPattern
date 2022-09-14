@@ -7,9 +7,10 @@
 
 #ifndef Command_h
 #define Command_h
+#include <iostream>
 class Command {
 public:
-    virtual void Execute(int id, const std::string &name, double salary) = 0;
+    virtual void Execute() = 0;
     virtual ~Command() {};
 };
 
