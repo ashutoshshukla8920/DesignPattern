@@ -9,13 +9,15 @@
 #define RemoveCommand_hpp
 
 #include "Command.h"
-class EmployeeDb;
+#include "EmployeeDb.hpp"
 #include <iostream>
 class RemoveCommand : public Command{
-    EmployeeDb *m_pDb;
+    EmployeeDb *m_pDb{};
+    Employee m_Emp{};
 public:
     RemoveCommand(EmployeeDb *db);
     virtual void Execute() override;
+    virtual void Undo() override;
 };
 
 #endif /* RemoveCommand_hpp */

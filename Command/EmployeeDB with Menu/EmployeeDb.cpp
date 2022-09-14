@@ -73,3 +73,12 @@ std::size_t EmployeeDb::Count() const {
 //void EmployeeDb::Execute(int id, const std::string &name, double salary) {
 //    AddNew(id, name, salary);
 //}
+
+const Employee &EmployeeDb::GetEmployee(int id) const {
+    int index{};
+    auto found = std::find_if(m_Employees.begin(), m_Employees.end(), [&index, id](const auto *emp) {
+        index++;
+        return (emp->m_Id == id);
+    });
+    return *m_Employees[index-1];
+}

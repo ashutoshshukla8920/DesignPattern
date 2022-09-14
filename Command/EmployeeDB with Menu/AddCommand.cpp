@@ -23,7 +23,11 @@ void AddCommand::Execute() {
     std::cin >> name;
     std::cout<<"Salary:";
     std::cin >> salary;
+    m_Id = id;
     m_pDb->AddNew(id, name, salary);
 }
 
+void AddCommand::Undo() {
+    m_pDb->Remove(m_Id);
+}
 

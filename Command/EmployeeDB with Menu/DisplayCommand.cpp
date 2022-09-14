@@ -17,5 +17,9 @@ void DisplayCommand::Execute() {
     m_pDb->DisplayChanges(-1);
 }
 
+void DisplayCommand::Undo() {
+    
+}
+
 
 

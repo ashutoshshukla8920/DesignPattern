@@ -16,6 +16,7 @@ class UpdateCommand : public Command{
 public:
     UpdateCommand(EmployeeDb *db);
     virtual void Execute() override;
+    virtual void Undo() override;
 };
 
 #endif /* UpdateCommand_hpp */

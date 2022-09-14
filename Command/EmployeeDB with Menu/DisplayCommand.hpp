@@ -16,6 +16,7 @@ class DisplayCommand : public Command{
 public:
     DisplayCommand(EmployeeDb *db);
     virtual void Execute() override;
+    virtual void Undo() override;
 };
 
 #endif /* DisplayCommand_hpp */

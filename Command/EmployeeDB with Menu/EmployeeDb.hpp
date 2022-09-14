@@ -36,6 +36,7 @@ public:
     void ChangeSalary(int id, double new_salary);
     const Employee *Get(std::size_t position)const;
     std::size_t Count()const;
+    const Employee &GetEmployee(int id) const;
 //    void Execute(int id, const std::string &name, double salary) override;
 };
 

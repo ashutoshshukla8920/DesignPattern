@@ -24,5 +24,8 @@ void UpdateCommand::Execute() {
     m_pDb->ChangeSalary(id, salary);
 }
 
+void UpdateCommand::Undo() {
+    
+}
 
 
