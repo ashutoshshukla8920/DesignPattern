@@ -22,11 +22,13 @@ void UpdateCommand::Execute() {
     std::cout<<"Salary:";
     std::cin >> salary;
     m_pDb->ChangeSalary(id, salary);
+    m_Salary = salary;
+    m_Id = id;
     g_Stack.push(new UpdateCommand(*this));
 }
 
 void UpdateCommand::Undo() {
-    
+    m_pDb->ChangeSalary(m_Id, m_Salary);
 }
 
 

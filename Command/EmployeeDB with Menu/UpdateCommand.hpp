@@ -13,6 +13,8 @@ class EmployeeDb;
 #include <iostream>
 class UpdateCommand : public Command{
     EmployeeDb *m_pDb;
+    double m_Salary{};
+    int m_Id{};
 public:
     UpdateCommand(EmployeeDb *db);
     virtual void Execute() override;
